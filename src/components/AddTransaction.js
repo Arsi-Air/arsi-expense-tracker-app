@@ -3,14 +3,14 @@ import { GlobalContext } from '../context/GlobalState';
 
 export const AddTransaction = () => {
 
-  const [cat, setCat] = useState('Income, Salary, Investment profit');
+  const [cat, setCat] = useState('Income (Rent/Invest. returns etc.)');
   const [amount, setAmount] = useState('');
-  const [disp, setDisp] = useState(false);
+  const [otherinput, setOtherinput] = useState(false);
 
   const { addTransaction, maxValue } = useContext(GlobalContext);
 
   const onSubmit = e => {
-    if (amount < maxValue && amount > maxValue*-1) {
+    if (amount < maxValue && amount > maxValue*-1 && (amount > 0 || amount < 0)) {
     e.preventDefault();
     
     const newTransaction = {
@@ -21,24 +21,26 @@ export const AddTransaction = () => {
 
     addTransaction(newTransaction); 
     } else {
-        alert("Are you sure? Please enter an income or expense lower than €"+maxValue);
+        alert("Please enter an income or expense lower than $" + maxValue + " and greater than 0");
         e.preventDefault();
     }
 
-    setDisp(false);
-    setCat("Income, Salary, Investment profit");    
+    setOtherinput(false);
+    setCat("Income (Rent/Invest. returns etc.)");    
 }
 
 const otherCat = e => {
           
-    if (e.target.value === "other") {
+    if (e.target.value === "Other") {
         
-        setCat("other");
-        setDisp(true);
+        setCat("Other");
+        setOtherinput(true);
 
     } else {
         setCat(e.target.value);
-        setDisp(false);
+        setOtherinput
+    
+    (false);
     }
     
     
@@ -49,24 +51,24 @@ const otherCat = e => {
         <h3>Add transactions</h3>
         <form onSubmit={onSubmit}>
 
-            <div className="form-control">
+            <div>
                 <label htmlFor="dropdown"><strong>Expense Category:</strong>
                 <br/>
                 (Select other to enter another option)</label>
                 <br/>
 
                 <select name="dropdown" value={cat} onChange={(e) => otherCat(e)}>
-                    <option value="other">Other</option>
-                    <option value="Income, Salary, Investment profit">Income, Salary, Investment profit</option>
-                    <option value="Food, Groceries">Food, Groceries</option>
-                    <option value="Clothing, Fashion, Accessories">Clothing, Fashion, Accessories</option>
-                    <option value="Recreation, Fun">Recreation, Fun</option>
-                    <option value="Miscallaneous">Miscallaneous</option>
+                    <option value="Income (Rent/Invest. returns etc.)">Income (Rent/Invest. returns etc.)</option>
+                    <option value="Groceries and other essentials">Groceries and other essentials</option>
+                    <option value="Shopping; non essential(Fashion etc.)">Shopping; non essential(Fashion etc.)</option>
+                    <option value="Entertainment">Entertainment</option>
+                    <option value="Miscellaneous">Miscellaneous</option>
+                    <option value="Other">Other</option>
 
                 </select>
             </div>
 
-            <div className="form-control" style={{display: disp ? "block":"none"}}>
+            <div style={{display: otherinput ? "inline":"none"}}>
                 <label htmlFor="custcat"><strong>Enter the category:</strong>
                 <br/>
                 <strong>Remember to change at least one character each time!</strong></label>
@@ -74,12 +76,13 @@ const otherCat = e => {
                 <input type="text" onChange={(e) => setCat(e.target.value)} placeholder="Enter category..." />
             </div>
 
-            <div className="form-control">
+            <div>
                 <label htmlFor="amount"><strong>Amount:</strong> <br/>
-                Try submitting a value <strong>larger than +€{maxValue}</strong> or <strong>smaller than -€{maxValue}</strong> to see what happens!</label>
+                Try submitting a value <strong>larger than +${maxValue}</strong> or <strong>smaller than -${maxValue}</strong> to see what happens!</label>
                 <input type="number" value={amount} onChange={(e) => setAmount(e.target.value)} placeholder="Enter amount..." />
             </div>
             
+            <button className="btn">Add transaction</button>
             <button className="btn">Add transaction</button>
         
         </form>
