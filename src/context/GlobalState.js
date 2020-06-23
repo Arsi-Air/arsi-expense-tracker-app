@@ -12,7 +12,7 @@ export const GlobalContext = createContext(initialState);
 // Provider component
 export const GlobalProvider = ({ children }) => {
     const [state, dispatch] = useReducer(AppReducer, initialState);
-console.log(dispatch);
+    const maxValue = 30000;
     
     // Actions
     function deleteTransaction(id) {
@@ -30,10 +30,11 @@ console.log(dispatch);
     }
 
     return (<GlobalContext.Provider value ={{
-        transactions:state.transactions,
+        transactions: state.transactions,
         deleteTransaction,
-        addTransaction
+        addTransaction,
+        maxValue
     }}>
         {children}
-    </GlobalContext.Provider>)
+    </GlobalContext.Provider>);
 }
