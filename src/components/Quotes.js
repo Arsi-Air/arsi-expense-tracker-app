@@ -9,8 +9,8 @@ export const Quotes = () => {
 
 
     return (
-        <div>
+        <p>
             Financial tip of the day: {quoteStore[num]}
-        </div>
+        </p>
     )
 }
