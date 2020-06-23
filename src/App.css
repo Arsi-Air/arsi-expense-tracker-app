@@ -151,7 +151,9 @@ select[name='dropdown'] {
   opacity: 1;
 }
 
-.quotebox {
-  position: relative;
-  
+.quotesdiv {
+  word-wrap: normal;
+  width: 350px;  
+  text-align: center;
+  font-size: small;
 }

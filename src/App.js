@@ -10,7 +10,7 @@ import { Quotes } from './components/Quotes'
 import { GlobalProvider } from './context/GlobalState';
 
 function App() {
-  return (
+  return (<div>
     <GlobalProvider>
       <Header />
       <Quotes />
@@ -21,6 +21,7 @@ function App() {
         <AddTransaction />
       </div>
     </GlobalProvider>
+    </div>
   );
 }
 
