@@ -9,25 +9,40 @@ export const AddTransaction = () => {
 
   const { addTransaction, maxValue } = useContext(GlobalContext);
 
+  const onSubIn =() => {
+    if (cat !== "Other" && cat !== "Income (Rent/Invest. returns etc.)") {
+
+        const newTransaction = {
+            id: Math.floor(Math.random()*100000000),
+            cat,
+            amount: -amount
+    }
+    addTransaction(newTransaction);
+    } else {
+        const newTransaction = {
+            id: Math.floor(Math.random()*100000000),
+            cat,
+            amount: +amount
+            } ; addTransaction(newTransaction);
+        } 
+}
+  
+
   const onSubmit = e => {
-    if ((amount > 0 || amount < 0) && amount < maxValue && amount > maxValue*-1) {
+    if ((amount > 0 || amount < 0) && amount <= maxValue && amount >= maxValue*-1) {
     e.preventDefault();
     setAmount('');
     
-    const newTransaction = {
-        id: Math.floor(Math.random()*100000000),
-        cat,
-        amount: +amount
-    }
+    onSubIn();
 
-    addTransaction(newTransaction); 
+
     } else {
         alert("Please enter a value lower than $" + maxValue + " and greater than 0");
         e.preventDefault();
     }
 
     setOtherinput(false);
-    setCat("Income (Rent/Invest. returns etc.");
+    setCat('Income (Rent/Invest. returns etc.)');
 }   
 
 const otherCat = e => {
@@ -37,7 +52,6 @@ const otherCat = e => {
         setOtherinput(true);
 
     } else {
-        e.preventDefault();
         setCat(e.target.value);
         setOtherinput(false);
     }
@@ -57,7 +71,6 @@ const otherCat = e => {
                 <br/>
 
                 <select name="dropdown" value={cat} onChange={(e) => otherCat(e)}>
-                    {/*<option disabled selected value> -- select an option -- </option>*/}
                     <option value="Other">Other</option>
                     <option value="Income (Rent/Invest. returns etc.)">Income (Rent/Invest. returns etc.)</option>
                     <option value="Groceries and other essentials">Groceries and other essentials</option>
