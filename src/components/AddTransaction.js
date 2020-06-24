@@ -10,7 +10,7 @@ export const AddTransaction = () => {
   const { addTransaction, maxValue } = useContext(GlobalContext);
 
   const onSubIn =() => {
-    if (cat !== "Other" && cat !== "Income (Rent/Invest. returns etc.)") {
+    if (cat === "Groceries and other essentials" || cat === "Shopping; non essential(Fashion etc.)" || cat === "Entertainment" || cat === "Miscellaneous" ) {
 
         const newTransaction = {
             id: Math.floor(Math.random()*100000000),
