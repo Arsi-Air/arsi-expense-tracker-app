@@ -27,7 +27,8 @@ export const AddTransaction = () => {
     }
 
     setOtherinput(false);
-}
+    setCat("Income (Rent/Invest. returns etc.");
+}   
 
 const otherCat = e => {
           

@@ -21,7 +21,10 @@ body {
 
 .container {
   margin: 30px auto;
-  width: 350px;
+  width: 366px;
+  border-width: 1px;
+  border-style: solid;
+  padding: 15px;
 }
 
 h1 {
@@ -153,7 +156,7 @@ select[name='dropdown'] {
 
 .quotesdiv {
   word-wrap: normal;
-  width: 350px;  
+  width: 366px;  
   text-align: center;
   font-size: small;
 }
@@ -164,4 +167,8 @@ select[name='dropdown'] {
 
 .amountinput2 {
   font-size: 17px;
+}
+
+.header {
+  text-align: center;
 }
