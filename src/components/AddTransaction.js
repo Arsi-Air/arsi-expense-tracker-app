@@ -10,7 +10,7 @@ export const AddTransaction = () => {
   const { addTransaction, maxValue } = useContext(GlobalContext);
 
   const onSubmit = e => {
-    if (amount < maxValue && amount > maxValue*-1 && (amount > 0 || amount < 0)) {
+    if ((amount > 0 || amount < 0) && amount < maxValue && amount > maxValue*-1) {
     e.preventDefault();
     
     const newTransaction = {
@@ -21,7 +21,7 @@ export const AddTransaction = () => {
 
     addTransaction(newTransaction); 
     } else {
-        alert("Please enter an income or expense lower than $" + maxValue + " and greater than 0");
+        alert("Please enter a value lower than $" + maxValue + " and greater than 0");
         e.preventDefault();
     }
 
@@ -52,7 +52,7 @@ const otherCat = e => {
         <form onSubmit={onSubmit}>
 
             <div>
-                <label htmlFor="dropdown"><strong>Expense Category:</strong>
+                <label htmlFor="dropdown"><strong className="amountinput2">Expense Category:</strong>
                 <br/>
                 (Select other to enter another option)</label>
                 <br/>
@@ -69,21 +69,21 @@ const otherCat = e => {
             </div>
 
             <div style={{display: otherinput ? "inline":"none"}}>
-                <label htmlFor="custcat"><strong>Enter the category:</strong>
+                <label><strong className="amountinput2">Enter the category:</strong>
                 <br/>
-                <strong>Remember to change at least one character each time!</strong></label>
+                Please change at least one character each time.</label>
                 <br />
                 <input type="text" onChange={(e) => setCat(e.target.value)} placeholder="Enter category..." />
             </div>
 
             <div>
-                <label htmlFor="amount"><strong>Amount:</strong> <br/>
-                Try submitting a value <strong>larger than +${maxValue}</strong> or <strong>smaller than -${maxValue}</strong> to see what happens!</label>
+                <label className="amountinput" htmlFor="amount"><strong className = "amountinput2">Amount:</strong> <br/>
+                Values larger than ${maxValue} are not allowed.</label>
                 <input type="number" value={amount} onChange={(e) => setAmount(e.target.value)} placeholder="Enter amount..." />
             </div>
             
             <button className="btn">Add transaction</button>
-            <button className="btn">Add transaction</button>
+            
         
         </form>
     </>);

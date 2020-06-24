@@ -1,3 +1,14 @@
+# Notes
+I learnt following things through this project:<br/>
+using state<br/>
+using context<br/>
+using reducer<br/>
+using flexbox in css<br/>
+making a dynamic form (new text input field appears if other is selected in drop down menu)<br/>
+App is live <a href="http://arsi-expense-tracker-app.surge.sh/">here</a><br/>
+
+## 
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

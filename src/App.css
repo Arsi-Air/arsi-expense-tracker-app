@@ -157,3 +157,11 @@ select[name='dropdown'] {
   text-align: center;
   font-size: small;
 }
+
+/*.amountinput {
+  font-size: smaller;
+}*/
+
+.amountinput2 {
+  font-size: 17px;
+}
