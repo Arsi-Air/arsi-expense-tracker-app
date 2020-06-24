@@ -4,8 +4,9 @@ export const Quotes = () => {
     const quoteStore = ["Stick to a budget!",
     "Ensure you pay off debts on time to avoid additional charges!",
     "Rebalance your investment portfolio when necessary!",
-    "Make sure you keep a good credit score!"]
-    const num = Math.floor(Math.random()*4)
+    "Make sure you keep a good credit score!",
+    "Start saving for retirement!"]
+    const num = Math.floor(Math.random()*5)
 
 
     return (
