@@ -54,7 +54,7 @@ const otherCat = e => {
             <div>
                 <label htmlFor="dropdown"><strong className="amountinput2">Expense Category:</strong>
                 <br/>
-                (Select other to enter another option)</label>
+                Select "other" to enter another option</label>
                 <br/>
 
                 <select name="dropdown" value={cat} onChange={(e) => otherCat(e)}>
