@@ -12,6 +12,7 @@ export const AddTransaction = () => {
   const onSubmit = e => {
     if ((amount > 0 || amount < 0) && amount < maxValue && amount > maxValue*-1) {
     e.preventDefault();
+    setAmount('');
     
     const newTransaction = {
         id: Math.floor(Math.random()*100000000),
@@ -26,21 +27,19 @@ export const AddTransaction = () => {
     }
 
     setOtherinput(false);
-    setCat("Income (Rent/Invest. returns etc.)");    
 }
 
 const otherCat = e => {
           
     if (e.target.value === "Other") {
-        
+
         setCat("Other");
         setOtherinput(true);
 
     } else {
+        
         setCat(e.target.value);
-        setOtherinput
-    
-    (false);
+        setOtherinput(false);
     }
     
     
