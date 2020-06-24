@@ -5,7 +5,7 @@ export const Quotes = () => {
     "Ensure you pay off debts on time to avoid additional charges!",
     "Rebalance your investment portfolio when necessary!",
     "Make sure you keep a good credit score!",
-    "Start saving for retirement!"]
+    "Start saving for your retirement!"]
     const num = Math.floor(Math.random()*5)
 
 
