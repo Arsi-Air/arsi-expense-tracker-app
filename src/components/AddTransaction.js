@@ -32,12 +32,11 @@ export const AddTransaction = () => {
 const otherCat = e => {
           
     if (e.target.value === "Other") {
-
         setCat("Other");
         setOtherinput(true);
 
     } else {
-        
+        e.preventDefault();
         setCat(e.target.value);
         setOtherinput(false);
     }
@@ -57,12 +56,13 @@ const otherCat = e => {
                 <br/>
 
                 <select name="dropdown" value={cat} onChange={(e) => otherCat(e)}>
+                    {/*<option disabled selected value> -- select an option -- </option>*/}
+                    <option value="Other">Other</option>
                     <option value="Income (Rent/Invest. returns etc.)">Income (Rent/Invest. returns etc.)</option>
                     <option value="Groceries and other essentials">Groceries and other essentials</option>
                     <option value="Shopping; non essential(Fashion etc.)">Shopping; non essential(Fashion etc.)</option>
                     <option value="Entertainment">Entertainment</option>
                     <option value="Miscellaneous">Miscellaneous</option>
-                    <option value="Other">Other</option>
 
                 </select>
             </div>
